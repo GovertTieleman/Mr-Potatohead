@@ -18,58 +18,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // get ImageViews
-        ImageView armsImageView = findViewById(R.id.armsImageView);
-        ImageView earsImageView = findViewById(R.id.earsImageView);
-        ImageView eyebrowsImageView = findViewById(R.id.eyebrowsImageView);
-        ImageView eyesImageView = findViewById(R.id.eyesImageView);
-        ImageView glassesImageView = findViewById(R.id.glassesImageView);
-        ImageView hatImageView = findViewById(R.id.hatImageView);
-        ImageView mouthImageView = findViewById(R.id.mouthImageView);
-        ImageView mustacheImageView = findViewById(R.id.mustacheImageView);
-        ImageView noseImageView = findViewById(R.id.noseImageView);
-        ImageView shoesImageView = findViewById(R.id.shoesImageView);
-
         // add ImageViews to ArrayList
-        allImageViews.add(armsImageView);
-        allImageViews.add(earsImageView);
-        allImageViews.add(eyebrowsImageView);
-        allImageViews.add(eyesImageView);
-        allImageViews.add(glassesImageView);
-        allImageViews.add(hatImageView);
-        allImageViews.add(mouthImageView);
-        allImageViews.add(mustacheImageView);
-        allImageViews.add(noseImageView);
-        allImageViews.add(shoesImageView);
-
-        // get CheckBoxes
-        CheckBox Arms = findViewById(R.id.armsCheckBox);
-        CheckBox Ears = findViewById(R.id.earsCheckBox);
-        CheckBox Eyebrows = findViewById(R.id.eyebrowsCheckBox);
-        CheckBox Eyes = findViewById(R.id.eyesCheckBox);
-        CheckBox Glasses = findViewById(R.id.glassesCheckBox);
-        CheckBox Hat = findViewById(R.id.hatCheckBox);
-        CheckBox Mouth = findViewById(R.id.mouthCheckBox);
-        CheckBox Mustache = findViewById(R.id.mustacheCheckBox);
-        CheckBox Nose = findViewById(R.id.noseCheckBox);
-        CheckBox Shoes = findViewById(R.id.shoesCheckBox);
+        allImageViews.add((ImageView) findViewById(R.id.armsImageView));
+        allImageViews.add((ImageView) findViewById(R.id.earsImageView));
+        allImageViews.add((ImageView) findViewById(R.id.eyebrowsImageView));
+        allImageViews.add((ImageView) findViewById(R.id.eyesImageView));
+        allImageViews.add((ImageView) findViewById(R.id.glassesImageView));
+        allImageViews.add((ImageView) findViewById(R.id.hatImageView));
+        allImageViews.add((ImageView) findViewById(R.id.mouthImageView));
+        allImageViews.add((ImageView) findViewById(R.id.mustacheImageView));
+        allImageViews.add((ImageView) findViewById(R.id.noseImageView));
+        allImageViews.add((ImageView) findViewById(R.id.shoesImageView));
 
         // add CheckBoxes to ArrayList
-        allCheckBoxes.add(Arms);
-        allCheckBoxes.add(Ears);
-        allCheckBoxes.add(Eyebrows);
-        allCheckBoxes.add(Eyes);
-        allCheckBoxes.add(Glasses);
-        allCheckBoxes.add(Hat);
-        allCheckBoxes.add(Mouth);
-        allCheckBoxes.add(Mustache);
-        allCheckBoxes.add(Nose);
-        allCheckBoxes.add(Shoes);
+        allCheckBoxes.add((CheckBox) findViewById(R.id.armsCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.earsCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.eyebrowsCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.eyesCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.glassesCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.hatCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.mouthCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.mustacheCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.noseCheckBox));
+        allCheckBoxes.add((CheckBox) findViewById(R.id.shoesCheckBox));
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
         // save CheckBoxes
         for (CheckBox checkBox : allCheckBoxes) {
             if (checkBox.isChecked()) {
@@ -81,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
         // load CheckBoxes
         for (CheckBox checkBox : allCheckBoxes) {
             // get text
@@ -96,21 +74,15 @@ public class MainActivity extends AppCompatActivity {
         // get checkBox
         CheckBox checkBox = (CheckBox) view;
 
-        // get text
-        String text = checkBox.getText().toString();
-
         // set ImageView
-        setAllImageViews(text);
+        setAllImageViews(checkBox.getText().toString());
     }
 
     public void setAllImageViews(String text) {
         // iterate over imageViews
         for (ImageView imageView : allImageViews) {
-            // get contentDescription text
-            String contentDescription = imageView.getContentDescription().toString();
-
             // set visibility for the right imageView
-            if (text.equals(contentDescription)) {
+            if (text.equals(imageView.getContentDescription().toString())) {
                 imageView.setVisibility(imageView.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
             }
         }
