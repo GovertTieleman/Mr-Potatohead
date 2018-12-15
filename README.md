@@ -1,4 +1,2 @@
-Mr. Potatohead app that saves the images when rotated.
+Mr. Potatohead can be dressed up by the user according to their preference. The screen can be rotated, and fits well on every screen size. By using an extra method to set the correct ImageViews, the code is kept succinct.
 
-![Alt text](/Screenshot_20181106-140228.jpg?raw=true "Portrait")
-![Alt text](/Screenshot_20181106-140241.jpg?raw=true "Landscape")
